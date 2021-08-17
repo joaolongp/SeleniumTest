@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
+
 public class BaseTests {
 
     private static WebDriver driver;
@@ -35,5 +37,9 @@ public class BaseTests {
         driver.findElement(By.xpath("//*[@id=\"load_form\"]/fieldset[7]/input")).sendKeys("joaopassword");
 
         driver.findElement(By.cssSelector("#load_form > div:nth-child(12) > div.span_1_of_4 > input")).click();
+
+        WebElement element = driver.findElement(By.xpath("//p[text()='This is just a dummy form, you just clicked SUBMIT BUTTON']"));
+
+        Assert.assertEquals(element.getText(), "This is just a dummy form, you just clicked SUBMIT BUTTON");
     }
 }
